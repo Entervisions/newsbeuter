@@ -1,5 +1,101 @@
 # Changes for Newsbeuter
 
+## 2.10 - 2016-06-15
+
+### Added
+- Solarized-light colorscheme (OmeGa)
+- Japanese localization (The Flying Rapist)
+- FAQ list
+- Long options support (#38)
+- `%F` format in `itemview-title-format`, mapping to feed title (Luke Duncan)
+- Support for OwnCloud News (#134) (dirb)
+- Newsbeuter's manpage now contains documentation for `*-title-format`,
+  `*-jumps-to-next-unread`, and `newsblur-url` settings (#234, #358) (Alexander
+  Batischev, Nikos Tsipinakis)
+- `ssl-verify` option that controls SSL certificate verification. It's on by
+  default (#354) (Nikos Tsipinakis)
+
+### Changed
+- Items fetched via TT-RSS now contain item's author (John W. O'Neill)
+- Tags are now extracted from The Old Reader (#189)
+- Solarized-dark colorscheme got updated (OmeGa)
+- README now sports Markdown (Jonathan Jin)
+- German localization got updated (Simon Nagl)
+- `pkg-config` is used to search for `ncursesw` (Jan Pobrislo)
+- ESCDELAY is set to 25ms
+- One can now build and install Newsbeuter without localization files with `make
+  newsbeuter && sudo make install-newsbeuter` (#241)
+- `newsbeuter` build is now reproducible (build date is no longer included into
+  the binary)
+- Marked lists (`<ol>`) are now rendered with a space after the marker
+- URLs are now hard-wrapped on the window's age, even if `text-width` is
+  non-zero (#282)
+- contrib/pinboard.pl got a cosmetic update (Srijith Nair)
+- `dc:creator` is now the same as `author` in RSS 1.0 (#143)
+- Bookmark scripts now receive feed's title as the fourth parameter (#341)
+- SSL certificate verification is now on by default (#354) (Nikos Tsipinakis)
+
+### Deprecated
+- When using `colorN` notation, N can't start with zero anymore (#186)
+
+### Removed
+- Wesnoth fix XSL as the original feed isn't broken anymore
+
+### Fixed
+- Undefined behaviour in configcontainer (#135) (Andrey Hitrin)
+- Segfault in Podbeuter, along with two potential bugs (Tilman Keskinoz)
+- Cache deletion when only one feed is configured (Harshaverdhan Rangan, Simon
+  Nagl)
+- Example for macro that executes external command via `set-browser` (mrbiber)
+- Tags in NewsBlur API (aniran)
+- Typo in config commands descriptions (Travis Reddell)
+- Dummy articles in NewsBlur API (aniran)
+- Numerous bugs caused by FeedHQ API not passing a setting to `libcurl` (Keith
+  Smiley)
+- *The* memory leak (gave us quite a bit of a headache, that one) (cpubug)
+- Multiple `highlight-article` (#166) (Luke Duncan)
+- Colors for unread feeds in feedlist (Luke Duncan)
+- Whole feeds occasionally marked unread and already enqueued enclosures
+  re-enqueued (#164) (trUSTssc)
+- Errors when retrieving feeds from The Old Reader (#150)
+- Parser fails when three arguments are passed to `highlight` (#225)
+- Query feeds tokenization (#194)
+- `highlight-article` priority (now it's higher than item formats) (#227) (Luke
+  Duncan)
+- Feedlist/articlelist slowness when there's a lot of items (#110)
+- Cache file is now created in XDG dir if config is in XDG dir (#245)
+- "Catchup all" is now limited by tag view (#251)
+- In podbeuter, requesting to download a file that is already downloaded will
+  re-download the file, not delete it (#169)
+- Typos in Russian localization (kstn)
+- Format errors in Brazilian Portuguese, Ukrainian and Chinese localization
+  files (#274)
+- One-line `urls` files without line feed at the end are no longer considered
+  empty by Newsbeuter (smaudet)
+- Items being skipped while applying ignore rules (#269)
+- Incorrect behaviour if no ignore rules are present (#283)
+- Potential bug in RSS parser (#287) (Timotej Lazar)
+- Self-closing tags like `<br/>` are not ignored anymore (#281)
+- Segfault with NewsBlur (#261) (Thomas Weißschuh)
+- Text wrapping (#256)
+- ESC in filebrowser ("Save article" dialog etc.) actually works now (#252)
+- FeedHQ, OldReader and TT-RSS APIs won't segfault on FreeBSD anymore if
+  `ttrss-password` is not set (#336).
+- Articles that were marked read in the search dialog now stay read when you go
+  back to articles view (#137, #339) (Andrey Hitrin)
+- Search in query feeds (#313) (Nikos Tsipinakis)
+- Newlines inside text blocks are treated as whitespace (#351) (Nikos
+  Tsipinakis)
+- Not Found errors (HTTP code 404) in Pocket script (#357) (Vlad Glagolev)
+- Off-by-one error in dumpconfig (#359) (Nikos Tsipinakis)
+- If `prepopulate-query-feeds` is set, query feeds are populated *before*
+  feedlist is sorted, fixing `unreadarticlecount` sorting (#362)
+- Toggling unread flag now removes deleted flag (#330) (Lance Orner)
+- Don't fail if iconv doesn't support //TRANSLIT (#364, #174) (Ján Kobezda)
+- Date conversion accounts for DST now (#369) (Lance Orner)
+
+
+
 ## 2.9 - 2015-02-19
 
 ### Added
